@@ -1,4 +1,4 @@
-#include "ESP32_FX1N.h"
+#include "MiniPLC.h"
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
@@ -10,7 +10,10 @@ char pass[] = "-------";
 
 BLYNK_WRITE(V10){                           //- Received v10 data to be used to control M100
   bool v10_cmd  = param.asInt();
-  setM(100,v10_cmd);
+  if(v10_cmd)
+    setM(100);
+  else
+    resetM(100);
 }
 BLYNK_WRITE(V2){                           //- Received v10 data to be used to control D4
   uint16_t v2_cmd  = param.asInt();

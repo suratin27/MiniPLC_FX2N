@@ -1,5 +1,4 @@
 #define MINIPLC_32U   1
-//#include <ESP32_FX1N.h>
 #include "ModbusClientRTU.h"
 
 ModbusClientRTU MB(Serial2);
