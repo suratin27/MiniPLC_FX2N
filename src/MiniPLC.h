@@ -6,12 +6,11 @@
 #include <ArduinoJson.h>
 #include <ESP32Time.h>
 #include <WiFi.h>
-#include "Wire.h"
-#include "FRAM.h"
+#include <Wire.h>
+#include <FRAM.h>
 
-//--------------------------- Main Function Parts
-void     initPLC();
-void     initPLC(uint16_t boardver);
+//------------------- Main Function Parts -------------------
+void     initPLC(uint16_t boardver = 1);
 bool     getM(uint16_t addr);
 void     setM(uint16_t addr);
 void     resetM(uint16_t addr);
@@ -29,5 +28,21 @@ void     setFD(uint16_t addr,float val);
 void     initRTC();
 void     RTCSettime(int sc,int min,int hr,int da,int mt,int yr);
 void     updateRTC();
+
+//------------------- LED Status function ------------------
+
+extern void  RUN_ON();
+extern void  RUN_OFF();
+extern void  TOGGLE_RUN();
+extern void  NET_ON();
+extern void  NET_OFF();
+extern void  TOGGLE_NET();
+extern void  WAR_ON();
+extern void  WAR_OFF();
+extern void  TOGGLE_WAR();
+extern void  ERR_ON();
+extern void  ERR_OFF();
+extern void  TOGGLE_ERR();
+extern void  statusRUN(bool _sts,int delay);
 
 #endif
